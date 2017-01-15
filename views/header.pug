@@ -7,7 +7,7 @@ nav.navbar.navbar-default
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='#') Brand
+      a.navbar-brand(href='/') Brand
     // Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
@@ -19,11 +19,17 @@ nav.navbar.navbar-default
             i(class="fa fa-user" aria-hidden="true")| &nbsp User Management 
             span.caret
           ul.dropdown-menu
-            li
-              a(href='#') User Account
-            li.divider(role='separator')
-            li
-              a(href='#') Logout
+            if login
+              li
+                a(href='/user/profile') User Account
+              li.divider(role='separator')
+              li
+                a(href='/user/logout') Logout
+            else
+              li
+                a(href='/user/signup') Sign up
+              li
+                a(href='/user/signin') Sign in
     // /.navbar-collapse
   // /.container-fluid
 
