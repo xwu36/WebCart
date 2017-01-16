@@ -12,8 +12,11 @@ nav.navbar.navbar-default
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li
-          a(href='#')
+          a(href='/shopping-cart')
             i(class="fa fa-shopping-cart" aria-hidden="true")| &nbsp Shopping Chart
+            | &nbsp 
+            if session.cart
+              span.badge= session.cart.totalQty
         li.dropdown
           a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
             i(class="fa fa-user" aria-hidden="true")| &nbsp User Management 

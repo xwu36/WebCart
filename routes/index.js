@@ -24,10 +24,19 @@ router.get('/add-to-cart/:id', function(req, res, next){
 			return res.redirect('/');
 		}
 		cart.add(product, product.id);
-		console.log(cart);
+		//console.log(cart);
 		req.session.cart = cart;
 		res.redirect('/');
 	});
+});
+
+router.get('/shopping-cart', function(req, res, next){
+  if(!req.session.cart){
+  	return res.render('shopping-cart', {products:null});
+  }
+  var cart = new Cart(req.session.cart);
+  var arr = cart.generateArray();
+  res.render('shopping-cart', { products: arr, totalPrice: cart.totalPrice });
 });
 
 module.exports = router;
